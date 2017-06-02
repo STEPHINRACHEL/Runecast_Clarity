@@ -1,0 +1,84 @@
+<clr-datagrid>
+    <clr-dg-column (click)="changeSortBase('kbid')">
+        <div>
+        <span>
+        kbid 
+        </span>
+        <span *ngIf="sortBase=='kbid'">
+        <clr-icon *ngIf="directionObj[sortBase]=='up'" shape="caret up"></clr-icon>
+        <clr-icon *ngIf="directionObj[sortBase]=='down'" shape="caret down"></clr-icon>
+        </span>
+        </div>
+        
+        
+    </clr-dg-column>
+    <clr-dg-column (click)="changeSortBase('affects')">affects
+        <span *ngIf="sortBase=='affects'">
+        <clr-icon *ngIf="directionObj[sortBase]=='up'" shape="caret up"></clr-icon>
+        <clr-icon *ngIf="directionObj[sortBase]=='down'" shape="caret down"></clr-icon>
+        </span>
+    </clr-dg-column>
+    <clr-dg-column (click)="changeSortBase('annotation')" style="width:113px">annotations
+        <span *ngIf="sortBase=='annotation'">
+        <clr-icon *ngIf="directionObj[sortBase]=='up'" shape="caret up"></clr-icon>
+        <clr-icon *ngIf="directionObj[sortBase]=='down'" shape="caret down"></clr-icon>
+        </span>
+    </clr-dg-column>
+    <clr-dg-column (click)="changeSortBase('annotationModified')" style="width:120px">annModified
+        <span *ngIf="sortBase=='annotationModified'">
+        <clr-icon *ngIf="directionObj[sortBase]=='up'" shape="caret up"></clr-icon>
+        <clr-icon *ngIf="directionObj[sortBase]=='down'" shape="caret down"></clr-icon>
+        </span>
+    </clr-dg-column>
+    <clr-dg-column (click)="changeSortBase('appliesTo')" style="width:100px">
+        
+        appliesTo
+        <span *ngIf="sortBase=='appliesTo'">
+        <clr-icon *ngIf="directionObj[sortBase]=='up'" shape="caret up"></clr-icon>
+        <clr-icon *ngIf="directionObj[sortBase]=='down'" shape="caret down"></clr-icon>
+        </span>
+    </clr-dg-column>
+    <clr-dg-column (click)="changeSortBase('riskRating')" style="width:110px">riskRating
+        <span *ngIf="sortBase=='riskRating'">
+        <clr-icon *ngIf="directionObj[sortBase]=='up'" shape="caret up"></clr-icon>
+        <clr-icon *ngIf="directionObj[sortBase]=='down'" shape="caret down"></clr-icon>
+        </span>
+    </clr-dg-column>
+    <clr-dg-column (click)="changeSortBase('title')">title
+        <span *ngIf="sortBase=='title'">
+        <clr-icon *ngIf="directionObj[sortBase]=='up'" shape="caret up"></clr-icon>
+        <clr-icon *ngIf="directionObj[sortBase]=='down'" shape="caret down"></clr-icon>
+        </span>
+    </clr-dg-column>
+    <clr-dg-column (click)="changeSortBase('type')">type
+        <span *ngIf="sortBase=='type'">
+        <clr-icon *ngIf="directionObj[sortBase]=='up'" shape="caret up"></clr-icon>
+        <clr-icon *ngIf="directionObj[sortBase]=='down'" shape="caret down"></clr-icon>
+        </span>
+    </clr-dg-column>
+    <clr-dg-column (click)="changeSortBase('affObjectsCount')">count
+        <span *ngIf="sortBase=='affObjectsCount'">
+        <clr-icon *ngIf="directionObj[sortBase]=='up'" shape="caret up"></clr-icon>
+        <clr-icon *ngIf="directionObj[sortBase]=='down'" shape="caret down"></clr-icon>
+        </span>
+    </clr-dg-column>
+
+    <clr-dg-row *ngFor="let user of (users |sort:sortBase:directionObj[sortBase]  | filter:global.searchParameter).slice(pagination.firstItem,pagination.firstItem+10)">
+        <clr-dg-cell>{{user.kbid}}</clr-dg-cell>
+        <clr-dg-cell>{{user.affects}}</clr-dg-cell>
+        <clr-dg-cell>{{user.annotation}}</clr-dg-cell>
+        <clr-dg-cell>{{user.annotationModified}}</clr-dg-cell>
+        <clr-dg-cell>{{user.appliesTo}}</clr-dg-cell>
+        <clr-dg-cell>{{user.riskRating}}</clr-dg-cell>
+        <clr-dg-cell>{{user.title}}</clr-dg-cell>
+        <clr-dg-cell>{{user.type}}</clr-dg-cell>
+        <clr-dg-cell>{{user.affObjectsCount}}</clr-dg-cell>
+        
+    </clr-dg-row>
+
+    <clr-dg-footer>
+    {{pagination.firstItem + 1}} - {{pagination.lastItem + 1}}
+    of {{pagination.totalItems}} users
+    <clr-dg-pagination #pagination [clrDgPageSize]="10" clrDgPage=2 [clrDgTotalItems]="(users|sort:sortBase:directionObj[sortBase] | filter:searchParam).length"></clr-dg-pagination>
+</clr-dg-footer>
+</clr-datagrid>
