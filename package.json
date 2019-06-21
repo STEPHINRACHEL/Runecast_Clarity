@@ -55,5 +55,16 @@
     "typescript": "~2.2.0",
     "typings": "^1.4.0",
     "webdriver-manager": "10.2.5"
-  }
+  },
+  "main": "karma.conf.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/STEPHINRACHEL/Runecast_Clarity.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/STEPHINRACHEL/Runecast_Clarity/issues"
+  },
+  "homepage": "https://github.com/STEPHINRACHEL/Runecast_Clarity#readme"
 }
